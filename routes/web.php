@@ -40,6 +40,7 @@ Auth::routes([
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::middleware(['auth'])->group(function () {
     //General Routes
     //Route::get('categories', CategoriesController::class)->middleware('role:Admin'); aplicamos este tipo de ruta solo para administradores del sistema aun cuando le asignemos el role no podra acceder ya que solo aplica a Admin
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
 //Reports PDF
 Route::get('report/pdf/{user}/{type}/{f1}/{f2}', [ExportController::class, 'reportPDF']);
 Route::get('report/pdf/{user}/{type}', [ExportController::class, 'reportPDF']);
+
 //Reports EXCEL
 Route::get('report/excel/{user}/{type}/{f1}/{f2}', [ExportController::class, 'reporteExcel']);
 Route::get('report/excel/{user}/{type}', [ExportController::class, 'reporteExcel']);
@@ -71,6 +73,7 @@ Route::get('report/excel/{user}/{type}', [ExportController::class, 'reporteExcel
 //User
 Route::get('perfil', [Perfilcontroller::class, 'index'])->name('perfil.index');
 Route::put('perfil/{user}',  [Perfilcontroller::class, 'actualizar_perfil'])->name('perfil.actualizar');
+
 //Password
 Route::get('password', [perfilcontroller::class, 'password'])->name('password.password');
 Route::put('password/{user}/password',  [perfilcontroller::class, 'actualizar_password'])->name('password.contraseña');
